@@ -1,6 +1,10 @@
 package kata;
 
 public class Account {
+    public Account(TransactionRepository transactionRepository) {
+        throw new UnsupportedOperationException();
+    }
+
     public void deposit(int i) {
         throw new UnsupportedOperationException();
     }
