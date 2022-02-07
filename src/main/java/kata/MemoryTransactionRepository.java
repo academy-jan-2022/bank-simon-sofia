@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class MemoryTransactionRepository implements TransactionRepository {
     @Override
-    public void add(int amount, Date date) {
+    public void add(int amount) {
         throw new UnsupportedOperationException();
     }
 }

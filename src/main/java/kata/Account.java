@@ -1,12 +1,15 @@
 package kata;
 
+@SuppressWarnings("ClassCanBeRecord")
 public class Account {
+    private final TransactionRepository transactionRepository;
+
     public Account(TransactionRepository transactionRepository) {
-        throw new UnsupportedOperationException();
+        this.transactionRepository = transactionRepository;
     }
 
-    public void deposit(int i) {
-        throw new UnsupportedOperationException();
+    public void deposit(int amount) {
+        transactionRepository.add(amount);
     }
 
     public void withdraw(int i) {
