@@ -2,6 +2,9 @@ package kata;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BankAcceptanceTest {
@@ -19,15 +22,20 @@ Date       || Amount || Balance
      */
     @Test void
     shouldPrintDesiredTransactions(){
-        String expectedOutput= "Date       || Amount || Balance\n" +
+        final ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        String expectedOutput= "Date || Amount || Balance\n" +
             "14/01/2012 || -500   || 2500\n" +
             "13/01/2012 || 2000   || 3000\n" +
             "10/01/2012 || 1000   || 1000";
+
         var account = new Account();
         account.deposit(1000);
         account.deposit(2000);
         account.withdraw(500);
-        var result= account.print();
-        assertEquals(expectedOutput, result);
+        account.print();
+
+        assertEquals(expectedOutput, output.toString());
     }
 }
