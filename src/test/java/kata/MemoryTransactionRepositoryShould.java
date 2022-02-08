@@ -21,11 +21,12 @@ public class MemoryTransactionRepositoryShould {
         when(dateProvider.getNow()).thenReturn(expectedDate);
         var repository = new MemoryTransactionRepository(dateProvider);
         repository.add(new Money(100));
+        var balance = repository.getBalance();
         List<Transaction> transactions = repository.getTransactions();
         var expected = List.of(
             new Transaction(
                 new Money(100),
-                expectedDate)
+                expectedDate, balance)
         );
         assertEquals(expected, transactions);
     }
