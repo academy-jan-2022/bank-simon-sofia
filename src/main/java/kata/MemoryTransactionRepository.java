@@ -24,8 +24,9 @@ public class MemoryTransactionRepository implements TransactionRepository {
 
     @Override
     public List<Transaction> getTransactions() {
-        Collections.reverse(transactions);
-        return transactions;
+        List<Transaction> sortedTransactions = transactions;
+        Collections.reverse(sortedTransactions);
+        return sortedTransactions;
     }
 
     @Override
