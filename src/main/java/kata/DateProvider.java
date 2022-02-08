@@ -1,10 +1,11 @@
 package kata;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateProvider implements DateProviderService {
     @Override
     public Date getNow() {
-        throw new UnsupportedOperationException();
+        return new Date();
     }
 }
