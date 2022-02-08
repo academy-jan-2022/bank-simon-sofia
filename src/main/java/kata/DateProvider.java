@@ -2,6 +2,9 @@ package kata;
 
 import java.util.Date;
 
-public interface DateProvider {
-	Date getNow();
+public class DateProvider implements DateProviderService {
+    @Override
+    public Date getNow() {
+        throw new UnsupportedOperationException();
+    }
 }

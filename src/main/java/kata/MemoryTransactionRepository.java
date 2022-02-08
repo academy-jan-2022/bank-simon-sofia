@@ -8,9 +8,9 @@ public class MemoryTransactionRepository implements TransactionRepository {
 
 
     List<Transaction> transactions = new ArrayList<>();
-    private final DateProvider dateProvider;
+    private final DateProviderService dateProvider;
 
-    public MemoryTransactionRepository(DateProvider dateProvider) {
+    public MemoryTransactionRepository(DateProviderService dateProvider) {
         this.dateProvider = dateProvider;
     }
 

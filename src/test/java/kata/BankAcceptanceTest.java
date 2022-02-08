@@ -30,7 +30,7 @@ Date       || Amount || Balance
             "13/01/2012 || 2000   || 3000\n" +
             "10/01/2012 || 1000   || 1000";
 
-        var account = new Account(new MemoryTransactionRepository(new DateProviderGregorian()));
+        var account = new Account(new MemoryTransactionRepository(new DateProvider()));
         account.deposit(1000);
         account.deposit(2000);
         account.withdraw(500);
