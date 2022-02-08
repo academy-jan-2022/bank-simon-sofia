@@ -2,5 +2,5 @@ package kata;
 
 import java.util.Date;
 
-public record Transaction(int amount, Date time) {
+public record Transaction(Money amount, Date time) {
 }

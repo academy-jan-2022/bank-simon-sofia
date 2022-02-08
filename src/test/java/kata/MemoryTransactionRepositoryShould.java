@@ -20,11 +20,11 @@ public class MemoryTransactionRepositoryShould {
         Date expectedDate = formatter.parse("2017-01-01");
         when(dateProvider.getNow()).thenReturn(expectedDate);
         var repository = new MemoryTransactionRepository(dateProvider);
-        repository.add(100);
+        repository.add(new Money(100));
         List<Transaction> transactions = repository.getTransactions();
         var expected = List.of(
             new Transaction(
-                100,
+                new Money(100),
                 expectedDate)
         );
         assertEquals(expected, transactions);

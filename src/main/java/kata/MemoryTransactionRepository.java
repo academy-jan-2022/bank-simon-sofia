@@ -15,7 +15,7 @@ public class MemoryTransactionRepository implements TransactionRepository {
     }
 
     @Override
-    public void add(int amount) {
+    public void add(Money amount) {
         transactions.add(new Transaction(amount, dateProvider.getNow()));
     }
 

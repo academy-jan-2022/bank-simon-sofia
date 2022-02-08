@@ -12,7 +12,7 @@ public class AccountShould {
         TransactionRepository transactionRepository = mock(TransactionRepository.class);
         var account = new Account(transactionRepository);
         account.deposit(100);
-        verify(transactionRepository).add(100);
+        verify(transactionRepository).add(new Money(100));
     }
 
     @Test
@@ -21,6 +21,6 @@ public class AccountShould {
         TransactionRepository transactionRepository = mock(TransactionRepository.class);
         var account = new Account(transactionRepository);
         account.withdraw(10);
-        verify(transactionRepository).add(-10);
+        verify(transactionRepository).add(new Money(-10));
     }
 }
