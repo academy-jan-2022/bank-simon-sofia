@@ -21,7 +21,7 @@ public class Account {
     }
 
     public void print() {
-        String output = "Date || Amount || Balance\n";
+        StringBuilder output = new StringBuilder("Date || Amount || Balance\n");
 
         var transactionsList = transactionRepository.getTransactions();
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -29,7 +29,12 @@ public class Account {
         for (Transaction transaction : transactionsList) {
             Date date= transaction.time();
             String strDate = formatter.format(date);
-            output +=  strDate +" || "+ transaction.amount().amount() +" || "+ transaction.currentBalance()+"\n";
+            output.append(strDate)
+                .append(" || ")
+                .append(transaction.amount().amount())
+                .append(" || ")
+                .append(transaction.currentBalance())
+                .append("\n");
         }
 
         System.out.print(output);
