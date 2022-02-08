@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,14 +39,13 @@ public class AccountShould {
         System.setOut(new PrintStream(output));
 
         String expectedOutput= "Date || Amount || Balance\n" +
-            "10/01/2012 || 10 || 10";
+            "10/01/2012 || 10 || 10\n";
 
         DateProviderService dateProvider = mock(DateProviderService.class);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date expectedDate = formatter.parse("2012-01-10");
         when(dateProvider.getNow()).thenReturn(expectedDate);
-
-        var account = new Account(new MemoryTransactionRepository(new DateProvider()));
+        var account = new Account(new MemoryTransactionRepository(dateProvider));
         account.deposit(10);
         account.print();
         assertEquals(expectedOutput, output.toString());

@@ -1,5 +1,10 @@
 package kata;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Account {
     private final TransactionRepository transactionRepository;
 
@@ -16,6 +21,17 @@ public class Account {
     }
 
     public void print() {
-        throw new UnsupportedOperationException();
+        String output = "Date || Amount || Balance\n";
+
+        var transactionsList = transactionRepository.getTransactions();
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+        for (Transaction transaction : transactionsList) {
+            Date date= transaction.time();
+            String strDate = formatter.format(date);
+            output +=  strDate +" || "+ transaction.amount().amount() +" || "+ transaction.currentBalance()+"\n";
+        }
+
+        System.out.print(output);
     }
 }

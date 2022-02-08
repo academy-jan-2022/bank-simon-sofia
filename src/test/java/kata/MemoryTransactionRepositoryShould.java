@@ -15,8 +15,8 @@ public class MemoryTransactionRepositoryShould {
     void
     store_a_transaction_in_the_given_date() throws ParseException {
         DateProviderService dateProvider = mock(DateProviderService.class);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date expectedDate = formatter.parse("2017-01-01");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date expectedDate = formatter.parse("01-01-2017");
         when(dateProvider.getNow()).thenReturn(expectedDate);
         var repository = new MemoryTransactionRepository(dateProvider);
         repository.add(new Money(100));

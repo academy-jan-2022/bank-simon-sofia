@@ -2,6 +2,8 @@ package kata;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class MemoryTransactionRepository implements TransactionRepository {
@@ -22,6 +24,7 @@ public class MemoryTransactionRepository implements TransactionRepository {
 
     @Override
     public List<Transaction> getTransactions() {
+        Collections.reverse(transactions);
         return transactions;
     }
 
