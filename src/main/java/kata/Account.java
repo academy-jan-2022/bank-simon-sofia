@@ -1,6 +1,5 @@
 package kata;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Account {
     private final TransactionRepository transactionRepository;
 
@@ -12,8 +11,8 @@ public class Account {
         transactionRepository.add(amount);
     }
 
-    public void withdraw(int i) {
-        throw new UnsupportedOperationException();
+    public void withdraw(int amount) {
+        transactionRepository.add(-amount);
     }
 
     public void print() {
