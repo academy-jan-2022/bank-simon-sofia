@@ -15,8 +15,7 @@ public class MemoryTransactionRepositoryShould {
     void
     store_a_transaction_in_the_given_date() throws ParseException {
         DateProviderService dateProvider = mock(DateProviderService.class);
-        //Date expectedDate = new GregorianCalendar(2017, Calendar.JANUARY, 1).getTime();
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date expectedDate = formatter.parse("2017-01-01");
         when(dateProvider.getNow()).thenReturn(expectedDate);
         var repository = new MemoryTransactionRepository(dateProvider);
@@ -26,7 +25,8 @@ public class MemoryTransactionRepositoryShould {
         var expected = List.of(
             new Transaction(
                 new Money(100),
-                expectedDate, balance)
+                expectedDate,
+                balance)
         );
         assertEquals(expected, transactions);
     }
